@@ -4,14 +4,14 @@ from .Helper import Helper
 from statistics.Helper import Helper as StatsHelper
 
 
-class DelToAdd(PseudoHistogram):
+class DelToAddLangs(PseudoHistogram):
     def __init__(self, data: DelToAddStats):
         super().__init__(
-            data=[data.del_to_add_per_datapoint, data.del_to_add_per_day],
+            data=[data.python_del_to_add_per_datapoint, data.js_del_to_add_per_datapoint],
             title="Weekdays activity",
             xlabel="Weekdays activity",
             ylabel="% of datapoints/actions",
             xticks=Helper.get_range_bin_xticks(StatsHelper.del_to_add_bins * 100),
             percentage=True,
-            legend=['per data point', 'per day'],
+            legend=['python', 'js/ts'],
         )

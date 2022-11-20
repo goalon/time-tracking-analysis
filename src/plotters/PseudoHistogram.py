@@ -1,6 +1,7 @@
 from typing import Optional, Iterable, Union
 from matplotlib import pyplot as plt
 from matplotlib.ticker import PercentFormatter
+import numpy as np
 
 
 class PseudoHistogram():
@@ -17,8 +18,13 @@ class PseudoHistogram():
         self.legend = legend
 
     def _load_data(self, x):
+        ALL_WIDTH = 0.8
+        width = ALL_WIDTH / len(self.data)
+        offset = -ALL_WIDTH / 2 + width / 2
+
         for d in self.data:
-            plt.bar(x, d, **self.bar_options)
+            plt.bar(x + offset, d, width, **self.bar_options)
+            offset += width
 
     def show(self):
         plt.figure(figsize=(14, 7))
@@ -28,7 +34,7 @@ class PseudoHistogram():
         plt.ylabel(self.ylabel)
 
         x_len = len(self.data[0])
-        x = list(range(x_len))
+        x = np.asarray(list(range(x_len)))
         self._load_data(x)
 
         if self.percentage:

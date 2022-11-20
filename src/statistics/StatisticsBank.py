@@ -9,6 +9,8 @@ from .ProjectsPerDays import ProjectsPerDays
 from .SwitchingProjects import SwitchingProjects
 from .Weekdays import Weekdays
 from .DelToAdd import DelToAdd
+from .Breaks import Breaks
+from .ActivityPerHour import ActivityPerHour
 
 
 class StatisticsBank:
@@ -35,6 +37,8 @@ class StatisticsBank:
         self.switching_projects = SwitchingProjects()
         self.weekdays = Weekdays()
         self.del_to_add = DelToAdd()
+        self.breaks = Breaks()
+        self.activity_per_hour = ActivityPerHour()
 
     def _add(self, event: TimeTrackingEvent):
         self.projects.add(event)
@@ -42,8 +46,11 @@ class StatisticsBank:
         self.switching_projects.add(event)
         self.weekdays.add(event)
         self.del_to_add.add(event)
+        self.breaks.add(event)
+        self.activity_per_hour.add(event)
 
     def _finalize_day(self, user_id: str):
         self.projects_per_days.finalize_day(user_id)
         self.switching_projects.finalize_day(user_id)
         self.del_to_add.finalize_day()
+        self.breaks.finalize_day()

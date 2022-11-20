@@ -1,16 +1,16 @@
 from plotters.PseudoHistogram import PseudoHistogram
-from statistics.Weekdays import Weekdays
+from statistics.ActivityPerHour import ActivityPerHour as ActivityPerHourStats
 from .Helper import Helper
 
 
-class ActivityPerWeekday(PseudoHistogram):
-    def __init__(self, data: Weekdays):
+class ActivityPerHour(PseudoHistogram):
+    def __init__(self, data: ActivityPerHourStats):
         super().__init__(
-            data=[data.data_points_per_weekday_percentage, data.actions_per_weekday_percentage],
+            data=[data.total_activity_per_hour_by_datapoints, data.total_activity_per_hour_by_actions],
             title="Weekdays activity",
             xlabel="Weekdays activity",
             ylabel="% of datapoints/actions",
-            xticks=Helper.weekdays_xticks,
+            xticks=list(range(24)),
             percentage=True,
             legend=['by data points', 'by actions'],
         )
