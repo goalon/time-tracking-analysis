@@ -7,9 +7,9 @@ class Breaks(PseudoHistogram):
     def __init__(self, data: BreaksStats):
         super().__init__(
             data=[data.total_breaks, data.python_breaks, data.js_breaks],
-            title="Weekdays activity",
-            xlabel="Weekdays activity",
-            ylabel="% of datapoints/actions",
+            title="Distribution of break lengths",
+            xlabel="break length range",
+            ylabel="% of breaks",
             xticks=Helper.get_breaks_xticks(),
             percentage=True,
             legend=['all', 'python', 'js/ts'],

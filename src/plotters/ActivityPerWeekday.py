@@ -8,7 +8,7 @@ class ActivityPerWeekday(PseudoHistogram):
         super().__init__(
             data=[data.data_points_per_weekday_percentage, data.actions_per_weekday_percentage],
             title="Weekdays activity",
-            xlabel="Weekdays activity",
+            xlabel="weekday",
             ylabel="% of datapoints/actions",
             xticks=Helper.weekdays_xticks,
             percentage=True,

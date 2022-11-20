@@ -8,9 +8,9 @@ class DelToAddLangs(PseudoHistogram):
     def __init__(self, data: DelToAddStats):
         super().__init__(
             data=[data.python_del_to_add_per_datapoint, data.js_del_to_add_per_datapoint],
-            title="Weekdays activity",
-            xlabel="Weekdays activity",
-            ylabel="% of datapoints/actions",
+            title="Deletions to additions ratio per datapoint restricted to a language",
+            xlabel="percentage range",
+            ylabel="deletions to additions ratio [%]",
             xticks=Helper.get_range_bin_xticks(StatsHelper.del_to_add_bins * 100),
             percentage=True,
             legend=['python', 'js/ts'],

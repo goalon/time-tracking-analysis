@@ -8,7 +8,7 @@ class PerformancePerWeekday(PseudoHistogram):
         super().__init__(
             data=[data.actions_per_data_point_per_weekday],
             title="Weekdays performance",
-            xlabel="Weekdays performance",
-            ylabel="avg. actions per datapoint",
+            xlabel="weekday",
+            ylabel="avg. no. of actions per datapoint",
             xticks=Helper.weekdays_xticks,
         )
