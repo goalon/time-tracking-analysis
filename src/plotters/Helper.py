@@ -1,4 +1,6 @@
 from typing import Iterable, Union, List
+from datetime import datetime
+import numpy as np
 
 
 class Helper:
@@ -24,3 +26,8 @@ class Helper:
         xticks = [f'[{a}, {b})' for a, b in zip(borders[:-1], borders[1:])]
         xticks[-1] = f'{xticks[-1][:-1]}]'
         return xticks
+
+    @staticmethod
+    def get_date_xticks(date_range: np.ndarray):
+        date_list = [datetime.fromisoformat(str(date)) for date in date_range]
+        return [date.strftime('%b %d') for date in date_list]

@@ -11,6 +11,8 @@ from .Weekdays import Weekdays
 from .DelToAdd import DelToAdd
 from .Breaks import Breaks
 from .ActivityPerHour import ActivityPerHour
+from .DataGathered import DataGathered
+from .Languages import Languages
 
 
 class StatisticsBank:
@@ -29,7 +31,7 @@ class StatisticsBank:
                     for obj in reader:
                         event = TimeTrackingEvent(user_id, bucket_date, obj)
                         self._add(event)
-                self._finalize_day(user_id)
+                self._finalize_day(user_id, bucket_date)
     
     def _init_data(self):
         self.projects = Projects()
@@ -39,6 +41,8 @@ class StatisticsBank:
         self.del_to_add = DelToAdd()
         self.breaks = Breaks()
         self.activity_per_hour = ActivityPerHour()
+        self.data_gathered = DataGathered()
+        self.languages = Languages()
 
     def _add(self, event: TimeTrackingEvent):
         self.projects.add(event)
@@ -48,9 +52,12 @@ class StatisticsBank:
         self.del_to_add.add(event)
         self.breaks.add(event)
         self.activity_per_hour.add(event)
+        self.data_gathered.add()
+        self.languages.add(event)
 
-    def _finalize_day(self, user_id: str):
+    def _finalize_day(self, user_id: str, bucket_date: datetime):
         self.projects_per_days.finalize_day(user_id)
         self.switching_projects.finalize_day(user_id)
         self.del_to_add.finalize_day()
         self.breaks.finalize_day()
+        self.data_gathered.finalize_day(user_id, bucket_date)

@@ -10,8 +10,9 @@ class SwitchingProjects(PseudoHistogram):
         super().__init__(
             data=[data.switching_projects_per_day_total_percentage],
             title="Projects switching within one day",
-            xlabel="number of switching distinct projects within one day",
+            xlabel="number of switching distinct projects",
             ylabel="% of days",
             xticks=Helper.get_simple_bin_xticks(x, last_bin_inf=True),
             percentage=True,
+            save_id='projects-switching-day',
         )

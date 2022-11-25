@@ -3,7 +3,7 @@ from statistics.Weekdays import Weekdays
 from .Helper import Helper
 
 
-class ActivityPerWeekday(PseudoHistogram):
+class ActivityByWeekday(PseudoHistogram):
     def __init__(self, data: Weekdays):
         super().__init__(
             data=[data.data_points_per_weekday_percentage, data.actions_per_weekday_percentage],
@@ -13,4 +13,5 @@ class ActivityPerWeekday(PseudoHistogram):
             xticks=Helper.weekdays_xticks,
             percentage=True,
             legend=['by data points', 'by actions'],
+            save_id='activity-by-weekday',
         )

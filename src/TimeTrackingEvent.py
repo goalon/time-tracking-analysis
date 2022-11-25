@@ -44,15 +44,24 @@ class TimeTrackingEvent(TimeTrackingEventFoundation):
     def python_data(self):
         return self.languages['python']
 
+    def _get_js_related_data(self):
+        js_related_data = []
+        for lang, lang_data in self.languages.items():
+            if 'javascript' in lang or 'typescript' in lang:
+                js_related_data.append(lang_data)
+
+        return js_related_data
+
     @property
     def contains_js(self):
-        return 'javascript' in self.languages or 'typescript' in self.languages
+        return bool(self._get_js_related_data())
 
     @property
     def js_data(self):
         total = TimeTrackingEventFoundation()
-        total.add(self.languages['javascript'])
-        total.add(self.languages['typescript'])
+        for d in self._get_js_related_data():
+            total.add(d)
+        
         return total
 
     def diff_from_start(self, last_end: datetime) -> float:

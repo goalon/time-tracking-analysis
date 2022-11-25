@@ -11,4 +11,5 @@ class PerformancePerWeekday(PseudoHistogram):
             xlabel="weekday",
             ylabel="avg. no. of actions per datapoint",
             xticks=Helper.weekdays_xticks,
+            save_id='weekdays-performance',
         )

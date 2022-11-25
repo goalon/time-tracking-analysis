@@ -13,4 +13,5 @@ class Breaks(PseudoHistogram):
             xticks=Helper.get_breaks_xticks(),
             percentage=True,
             legend=['all', 'python', 'js/ts'],
+            save_id='breaks',
         )

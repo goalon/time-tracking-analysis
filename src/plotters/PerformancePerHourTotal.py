@@ -10,4 +10,5 @@ class PerformancePerHourTotal(PseudoHistogram):
             xlabel="hour",
             ylabel="avg. no. of actions per datapoint",
             xticks=list(range(24)),
+            save_id='performance-by-hour',
         )

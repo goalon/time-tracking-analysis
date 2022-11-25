@@ -11,4 +11,5 @@ class PerformancePerHourLangs(PseudoHistogram):
             ylabel="avg. no. of actions per datapoint",
             xticks=list(range(24)),
             legend=['python', 'js/ts'],
+            save_id='performance-by-hour-langs',
         )

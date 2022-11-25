@@ -10,8 +10,9 @@ class DelToAdd(PseudoHistogram):
             data=[data.del_to_add_per_datapoint, data.del_to_add_per_day],
             title="Deletions to additions ratio",
             xlabel="percentage range",
-            ylabel="deletions to additions ratio [%]",
+            ylabel="% of datapoints/days",
             xticks=Helper.get_range_bin_xticks(StatsHelper.del_to_add_bins * 100),
             percentage=True,
             legend=['per data point', 'per day'],
+            save_id='del-to-add',
         )
